@@ -26,13 +26,7 @@ public class ChercherTest {
     2. Click on "Enable button after 10 seconds"
     3. Explicitly wait until the button is enabled
     4. Then verify the button is enabled
-    Task3:
-    1. Go to:  http://secure.smartbearsoftware.com/samples/testcomplete12/WebOrders/login.aspx
-    2. Login with username: Tester, password: test
-    3. Click  Order button
-    4. Verify under Product Information, selected option is “MyMoney”
-    5. Then select FamilyAlbum, make quantity 2, and click Calculate,
-    6. Then verify Total is equal to Quantity*PricePerUnit
+
 */
 
     WebDriver driver;
@@ -77,5 +71,6 @@ public class ChercherTest {
         wait.until(ExpectedConditions.elementToBeClickable(button));
         System.out.println("button.isEnabled() = " + button.isEnabled());
     }
+
 }
 
