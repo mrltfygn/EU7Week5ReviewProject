@@ -59,5 +59,22 @@ public class DropdownTest {
         String actualSelectedOption = productDropdown.getFirstSelectedOption().getText();
         Assert.assertEquals(actualSelectedOption,expectedSelectedOption,"Verify Test Pass");
 
+        // 5. Then select FamilyAlbum, make quantity 2, and click Calculate,
+        productDropdown.selectByVisibleText("FamilyAlbum");
+        WebElement quantityBox=driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtQuantity"));
+        quantityBox.clear();
+        quantityBox.sendKeys("2");
+        WebElement calculateButtton=driver.findElement(By.cssSelector("input[type='submit']"));
+        calculateButtton.click();
+        //6. Then verify Total is equal to Quantity*PricePerUnit
+        int expectedPrice=160;
+        WebElement actualPriceElement=driver.findElement(By.id("ctl00_MainContent_fmwOrder_txtTotal"));
+        int actualPrice= Integer.parseInt(actualPriceElement.getAttribute("value"));
+
+        Assert.assertEquals(expectedPrice,actualPrice,"Price is NOT expected");
+
+
+
+
     }
 }
