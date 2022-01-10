@@ -1,10 +1,7 @@
 package com.cybertek.tests.Week5;
 
 import com.cybertek.utilities.WebDriverFactory;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
@@ -45,6 +42,25 @@ public class ScrollingTest {
         Thread.sleep(2000);
         //advanced Keyboard actions
         actions.sendKeys(Keys.PAGE_UP,Keys.PAGE_UP,Keys.PAGE_UP).perform();
+    }
+    @Test
+    public void scrollTestJSE() throws InterruptedException {
+        //first way
+        JavascriptExecutor jse= (JavascriptExecutor) driver;
+        Thread.sleep(2000);
+        jse.executeScript("window.scroll(0,document.body.scrollHeight)");
+        Thread.sleep(2000);
+        jse.executeScript("window.scroll(0,- document.body.scrollHeight)");
+        Thread.sleep(1000);
+        //second way
+        WebElement cybertekschool=driver.findElement(By.linkText("Cybertek School"));
+        jse.executeScript("arguments[0].scrollIntoView(true)",cybertekschool);
 
     }
+    /*HomeWork:
+    This is real interview test
+    HW: v.Test application www.IonicPartners.com:
+vi. Test 1: Go to <Blog> page and scroll it down
+vii. Test 2: Go to <About> page, scroll it down and click on Twitter icon at the bottom of the page
+    * */
 }
